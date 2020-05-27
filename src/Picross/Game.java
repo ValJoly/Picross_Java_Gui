@@ -9,7 +9,7 @@ public class Game extends JPanel {
     ArrayList<ArrayList<Tile>> buttons;
     PicrossBoard picross;
 
-    Game(AListener listener) {
+    Game(Gui listener) {
         buttons = new ArrayList<>();
         this.setLayout(null);
         this.setBackground(Color.darkGray);
@@ -55,6 +55,22 @@ public class Game extends JPanel {
 
             buttons.add(tmp);
         }
+    }
+
+    public ArrayList<ArrayList<Tile>> getButtons() {
+        return buttons;
+    }
+
+    public void setButtons(ArrayList<ArrayList<Tile>> buttons) {
+        this.buttons = buttons;
+    }
+
+    public PicrossBoard getPicross() {
+        return picross;
+    }
+
+    public void setPicross(PicrossBoard picross) {
+        this.picross = picross;
     }
 
     public static String convertToMultiline(String orig) {

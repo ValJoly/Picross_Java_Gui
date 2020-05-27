@@ -9,14 +9,14 @@ public class Tile extends JButton {
 
     private int state;
 
-    Tile(AListener listener){
+    Tile(Gui listener){
         state = 0;
         this.setBackground(Color.white);
         this.setBounds(10, 10, 10, 10);
         this.addActionListener(listener);
     }
 
-    Tile(int x, int y, int w, int h, AListener listener){
+    Tile(int x, int y, int w, int h, Gui listener){
         state = 0;
         this.setBackground(Color.white);
         this.setBounds(x, y, w, h);

@@ -11,7 +11,7 @@ public class MainMenu extends JPanel {
     private JButton edition;
     private JLabel difficulty;
 
-    MainMenu(AListener listener) {
+    MainMenu(Gui listener) {
 
         this.setLayout(null);
         this.setSize(700, 700);

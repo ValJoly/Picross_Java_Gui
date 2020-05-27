@@ -7,19 +7,10 @@ import java.awt.event.ActionListener;
 
 
 
-class AListener implements ActionListener {
-
-    @Override
-    public void actionPerformed(ActionEvent e) {
-
-        //If Main menu
-
-}
-
-public class Gui extends JFrame {
+public class Gui extends JFrame implements ActionListener{
 
     Gui(){
-        AListener listener = new AListener();
+
 
         this.setSize(700, 700);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -27,10 +18,15 @@ public class Gui extends JFrame {
         this.setIconImage(new ImageIcon("assets/pic/icon.png").getImage());
         this.setLocationRelativeTo(null);
 
-        MainMenu start = new MainMenu(listener);
+        MainMenu start = new MainMenu(this);
 
         this.setContentPane(start);
         this.setVisible(true);
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+
     }
 }
 

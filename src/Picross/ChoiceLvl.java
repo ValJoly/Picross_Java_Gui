@@ -12,7 +12,7 @@ public class ChoiceLvl extends JPanel {
     private ArrayList<JButton> lvls;
 
 
-    ChoiceLvl(String path, AListener listener) {
+    ChoiceLvl(String path, Gui listener) {
 
         lvls = new ArrayList<>();
         String[] pathnames;
