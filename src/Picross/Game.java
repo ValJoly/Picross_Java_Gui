@@ -2,26 +2,40 @@ package Picross;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 public class Game extends JPanel {
 
-    ArrayList<ArrayList<Tile>> buttons;
-    PicrossBoard picross;
+    private ArrayList<ArrayList<Tile>> buttons;
+    private ActionListener listener;
+    private JButton back;
 
-    Game(Gui listener) {
-        buttons = new ArrayList<>();
-        this.setLayout(null);
-        this.setBackground(Color.darkGray);
-
+    Game(Gui guiListener) {
 
         //game panel setup
-
+        listener = guiListener;
         buttons = new ArrayList<>();
+
+        back = new JButton("Back");
+        back.setBounds(600, 600, 50, 50);
+        back.addActionListener(listener);
+
         this.setLayout(null);
         this.setBackground(Color.darkGray);
 
+    }
+
+    public void setPath(String path) {
+
+        PicrossBoard picross = new PicrossBoard(path);
+
         buttons.clear();
+        for (int i = this.getComponentCount() - 1; i >= 0; i--) {
+            this.remove(i);
+        }
+
+        this.add(back);
 
         for (int i = 0; i < picross.getSquareSize(); i++) {
             ArrayList<Tile> tmp = new ArrayList<>();
@@ -56,7 +70,6 @@ public class Game extends JPanel {
             buttons.add(tmp);
         }
     }
-
     public ArrayList<ArrayList<Tile>> getButtons() {
         return buttons;
     }
@@ -65,14 +78,14 @@ public class Game extends JPanel {
         this.buttons = buttons;
     }
 
-    public PicrossBoard getPicross() {
-        return picross;
+    public JButton getBack() {
+        return back;
     }
 
-    public void setPicross(PicrossBoard picross) {
-        this.picross = picross;
+    public Boolean isFinish() {
+        //not yet implemented
+        return false;
     }
-
     public static String convertToMultiline(String orig) {
         return "<html>" + orig.replaceAll("\n", "<br>");
     }
