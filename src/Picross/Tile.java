@@ -40,11 +40,11 @@ public class Tile extends JButton {
 
             case 1:
 
-                this.setBackground(Color.gray);
+                this.setBackground(Color.black);
                 break;
             case 2:
 
-                this.setBackground(Color.black);
+                this.setBackground(Color.gray);
                 break;
         }
     }

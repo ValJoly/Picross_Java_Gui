@@ -88,6 +88,15 @@ public class Gui extends JFrame implements ActionListener{
                     }
                 }
             }
+            if (this.game.isFinish()) {
+                JOptionPane finish;
+
+                //End of picross pop up
+                finish = new JOptionPane();
+                finish.showMessageDialog(null, "You successfully complete this level", "lvl finished", JOptionPane.INFORMATION_MESSAGE);
+
+                this.setContentPane(start);
+            }
         }
     }
 }
