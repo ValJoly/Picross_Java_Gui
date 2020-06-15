@@ -12,6 +12,7 @@ public class Gui extends JFrame implements ActionListener{
     MainMenu start;
     Game game;
     ChoiceLvl lvlSelector;
+    LvlEditorDifficulty lvlEdDiff;
 
     Gui(){
 
@@ -23,6 +24,7 @@ public class Gui extends JFrame implements ActionListener{
         this.setIconImage(new ImageIcon("assets/pic/icon.png").getImage());
         this.setLocationRelativeTo(null);
 
+        lvlEdDiff = new LvlEditorDifficulty(this);
         lvlSelector = new ChoiceLvl(this);
         game = new Game(this);
         start = new MainMenu(this);
@@ -30,8 +32,11 @@ public class Gui extends JFrame implements ActionListener{
         this.setVisible(true);
     }
 
+    //method where all the action will be treated
     @Override
     public void actionPerformed(ActionEvent e) {
+
+        //case when we are in the main menu
         if (this.getContentPane() == start) {
             if (e.getSource() == start.getHard()){
                 lvlSelector.setPath("assets/picrossFiles/hard");
@@ -48,9 +53,13 @@ public class Gui extends JFrame implements ActionListener{
                 this.setContentPane(lvlSelector);
                 this.setVisible(true);
 
+            }else if (e.getSource() == start.getEdition()) {
+                this.setContentPane(lvlEdDiff);
+                this.setVisible(true);
             }
         }
 
+        //case when we are in the level selector
         if (this.getContentPane() == lvlSelector) {
 
             for (JButton iter : lvlSelector.getLvls()) {
@@ -71,6 +80,7 @@ public class Gui extends JFrame implements ActionListener{
             }
         }
 
+        //case when we are in the game
         if (this.getContentPane() == game) {
 
             if (e.getSource() == game.getBack()) {
@@ -91,11 +101,17 @@ public class Gui extends JFrame implements ActionListener{
             if (this.game.isFinish()) {
                 JOptionPane finish;
 
-                //End of picross pop up
+                //End of the game -> pop up
                 finish = new JOptionPane();
                 finish.showMessageDialog(null, "You successfully complete this level", "lvl finished", JOptionPane.INFORMATION_MESSAGE);
 
                 this.setContentPane(start);
+            }
+        }
+        if (this.getContentPane() == lvlEdDiff) {
+            if (e.getSource() == lvlEdDiff.getBack()) {
+                this.setContentPane(start);
+                this.setVisible(true);
             }
         }
     }

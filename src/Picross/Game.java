@@ -91,7 +91,9 @@ public class Game extends JPanel {
     }
 
     public Boolean isFinish() {
+        //creation of a new array list to convert the buttons to a matrix of 1 and 0
         ArrayList<ArrayList<Integer>> verif = new ArrayList<>();
+        //filling the matrix
         for (int i = 0; i < buttons.size(); i++) {
             ArrayList<Integer> tmp = new ArrayList<>();
             for (int j = 0; j < buttons.get(0).size(); j++) {
@@ -102,10 +104,9 @@ public class Game extends JPanel {
                     tmp.add(1);
                 }
             }
-            System.out.println(tmp);
             verif.add(tmp);
         }
-        System.out.println('\n');
+        //testing if both, the solution and the current map are the same
         for(int i = 0; i < picross.getMap().size(); i++) {
             for (int j = 0; j < picross.getMap().size(); j++) {
                 if (verif.get(i).get(j) != picross.getMap().get(i).get(j)) {
@@ -113,9 +114,7 @@ public class Game extends JPanel {
                 }
             }
         }
-        for(int i = 0; i < picross.getMap().size(); i++) {
-            System.out.println(picross.getMap().get(i));
-        }
+
         return true;
     }
     //Function to transform the text of the label in multiline using HTML tags (cause \n don't work)

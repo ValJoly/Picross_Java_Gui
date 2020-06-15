@@ -50,6 +50,7 @@ public class ChoiceLvl extends JPanel {
 		}
 
 		JButton back = new JButton("Back");
+		back.setBackground(Color.white);
 		back.addActionListener(listener);
 		this.add(back);
 		lvls.add(back);
@@ -60,6 +61,7 @@ public class ChoiceLvl extends JPanel {
 
 			// Create and add a new JButton for each file in the folder
 			JButton tmp = new JButton(iter);
+			tmp.setBackground(Color.white);
 			tmp.addActionListener(listener);
 			lvls.add(tmp);
 			this.add(tmp);
