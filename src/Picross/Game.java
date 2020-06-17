@@ -20,7 +20,7 @@ public class Game extends JPanel {
         buttons = new ArrayList<>();
 
         back = new JButton("Back");
-        back.setBounds(600, 600, 50, 50);
+        back.setBounds(550, 550, 100, 100);
         back.addActionListener(listener);
 
         this.setLayout(null);

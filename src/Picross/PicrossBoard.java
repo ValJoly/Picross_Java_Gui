@@ -67,9 +67,21 @@ public class PicrossBoard {
         solMap = new ArrayList<>();
         coefX = new ArrayList<>();
         coefY = new ArrayList<>();
-        squareSize = 0;
+        squareSize = 10;
 
-        try {
+        for (int i = 0; i < squareSize; i++) {
+            ArrayList<Integer> tmp = new ArrayList<>();
+            for (int j = 0; j < squareSize; j++) {
+                tmp.add(0);
+            }
+            solMap.add(tmp);
+            tmp.clear();
+            tmp.add(0);
+            coefX.add(tmp);
+            coefY.add(tmp);
+        }
+
+        /*try {
             File file = new File("picrossFiles/easy/house.picross");
             Scanner sc = new Scanner(file);
 
@@ -112,7 +124,26 @@ public class PicrossBoard {
             }
         }catch (Exception exept){
             System.out.println(exept);
-        }
+        }*/
+
+    }
+
+
+
+    public void setSquareSize(int squareSize) {
+        this.squareSize = squareSize;
+    }
+
+    public void setCoefX(ArrayList<ArrayList<Integer>> coefX) {
+        this.coefX = coefX;
+    }
+
+    public void setCoefY(ArrayList<ArrayList<Integer>> coefY) {
+        this.coefY = coefY;
+    }
+
+    public void setSolMap(ArrayList<ArrayList<Integer>> solMap) {
+        this.solMap = solMap;
     }
 
     public int getSquareSize() {
@@ -140,5 +171,10 @@ public class PicrossBoard {
             }
         }
         return true;
+    }
+
+    @Override
+    public String toString() {
+        return "not yet implemented";
     }
 }

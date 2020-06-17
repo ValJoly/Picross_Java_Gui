@@ -13,6 +13,7 @@ public class Gui extends JFrame implements ActionListener{
     Game game;
     ChoiceLvl lvlSelector;
     LvlEditorDifficulty lvlEdDiff;
+    LvlEditor lvlEditor;
 
     Gui(){
 
@@ -25,6 +26,7 @@ public class Gui extends JFrame implements ActionListener{
         this.setLocationRelativeTo(null);
 
         lvlEdDiff = new LvlEditorDifficulty(this);
+        lvlEditor = new LvlEditor(this);
         lvlSelector = new ChoiceLvl(this);
         game = new Game(this);
         start = new MainMenu(this);
@@ -112,6 +114,34 @@ public class Gui extends JFrame implements ActionListener{
             if (e.getSource() == lvlEdDiff.getBack()) {
                 this.setContentPane(start);
                 this.setVisible(true);
+            } else if (e.getSource() == lvlEdDiff.getEasy()) {
+                this.lvlEditor.setDifficulty("easy");
+                this.setContentPane(lvlEditor);
+                this.setVisible(true);
+            } else if (e.getSource() == lvlEdDiff.getMedium()) {
+                this.lvlEditor.setDifficulty("medium");
+                this.setContentPane(lvlEditor);
+                this.setVisible(true);
+            } else if (e.getSource() == lvlEdDiff.getHard()) {
+                this.lvlEditor.setDifficulty("hard");
+                this.setContentPane(lvlEditor);
+                this.setVisible(true);
+            }
+        }
+        if (this.getContentPane() == lvlEditor) {
+            if (e.getSource() == lvlEditor.getBack()) {
+                this.setContentPane(lvlEdDiff);
+                this.setVisible(true);
+            }
+            for (ArrayList<Tile> iterI : this.lvlEditor.getButtons()) {
+
+                for (Tile iterJ : iterI ) {
+
+                    if (e.getSource() == iterJ) {
+
+                        iterJ.setState((iterJ.getState() + 1) % 2);
+                    }
+                }
             }
         }
     }
