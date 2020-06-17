@@ -75,10 +75,6 @@ public class PicrossBoard {
                 tmp.add(0);
             }
             solMap.add(tmp);
-            tmp.clear();
-            tmp.add(0);
-            coefX.add(tmp);
-            coefY.add(tmp);
         }
 
         /*try {
@@ -132,18 +128,90 @@ public class PicrossBoard {
 
     public void setSquareSize(int squareSize) {
         this.squareSize = squareSize;
+        this.solMap.clear();
+        for (int i = 0; i < this.squareSize; i++) {
+            ArrayList<Integer> tmp = new ArrayList<>();
+            for (int j = 0; j < this.squareSize; j++) {
+                tmp.add(0);
+            }
+            solMap.add(tmp);
+        }
     }
 
-    public void setCoefX(ArrayList<ArrayList<Integer>> coefX) {
-        this.coefX = coefX;
+    public void calculateCoefX() {
+        this.coefX.clear();
+        for (int i = 0; i < this.squareSize; i++) {
+            ArrayList<Integer> tmp = new ArrayList<>();
+            int coef = 0;
+            for (int j = 0; j < this.squareSize - 1; j++) {
+                if (solMap.get(i).get(j) == 1 && j == 0) {
+                    coef++;
+                    if (solMap.get(i).get(j + 1) == 1) {
+                        coef++;
+                    }
+                }else if (solMap.get(i).get(j) == 0 && solMap.get(i).get(j + 1) == 1) {
+                    coef++;
+                    if (j == squareSize - 1) {
+                        tmp.add(coef);
+                    }
+                }else if ((solMap.get(i).get(j) == 1 && solMap.get(i).get(j + 1) == 1) && j != squareSize - 2) {
+                    coef++;
+                }else if (solMap.get(i).get(j) == 1 && solMap.get(i).get(j + 1) == 0) {
+                    tmp.add(coef);
+                    coef = 0;
+                }else if ((solMap.get(i).get(j) == 1 && solMap.get(i).get(j + 1) == 1) && j == squareSize - 2) {
+                    coef++;
+                    tmp.add(coef);
+                    coef = 0;
+                }
+            }
+            if (tmp.isEmpty()) {
+                tmp.add(0);
+            }
+            coefX.add(tmp);
+        }
     }
 
-    public void setCoefY(ArrayList<ArrayList<Integer>> coefY) {
-        this.coefY = coefY;
+    public void calculateCoefY() {
+        this.coefY.clear();
+        for (int j = 0; j < this.squareSize; j++) {
+            ArrayList<Integer> tmp = new ArrayList<>();
+            int coef = 0;
+            for (int i = 0; i < this.squareSize - 1; i++) {
+                if (solMap.get(i).get(j) == 1 && i == 0) {
+                    coef++;
+                    if (solMap.get(i + 1).get(j) == 1) {
+                        coef++;
+                    }
+                }else if (solMap.get(i).get(j) == 0 && solMap.get(i + 1).get(j) == 1) {
+                    coef++;
+                    if (i == squareSize - 1) {
+                        tmp.add(coef);
+                    }
+                }else if ((solMap.get(i).get(j) == 1 && solMap.get(i + 1).get(j) == 1) && i != squareSize - 2) {
+                    coef++;
+                }else if (solMap.get(i).get(j) == 1 && solMap.get(i + 1).get(j) == 0) {
+                    tmp.add(coef);
+                    coef = 0;
+                }else if ((solMap.get(i).get(j) == 1 && solMap.get(i + 1).get(j) == 1) && i == squareSize - 2) {
+                    coef++;
+                    tmp.add(coef);
+                    coef = 0;
+                }
+            }
+            if (tmp.isEmpty()) {
+                tmp.add(0);
+            }
+            coefY.add(tmp);
+        }
     }
 
-    public void setSolMap(ArrayList<ArrayList<Integer>> solMap) {
+    public void setMap(ArrayList<ArrayList<Integer>> solMap) {
         this.solMap = solMap;
+    }
+
+    public void setIndex(int i, int j, int value) {
+        solMap.get(i).set(j, value);
     }
 
     public int getSquareSize() {
@@ -175,6 +243,29 @@ public class PicrossBoard {
 
     @Override
     public String toString() {
-        return "not yet implemented";
+
+        calculateCoefX();
+        calculateCoefY();
+
+        String tmp = new String(Integer.toString(squareSize) + '\n');
+        for (ArrayList<Integer> iterI : solMap) {
+            for (Integer iterJ : iterI) {
+                tmp += Integer.toString(iterJ) + " ";
+            }
+            tmp += '\n';
+        }
+        for (ArrayList<Integer> x : coefX) {
+            for (Integer integer : x) {
+                tmp += integer + " ";
+            }
+            tmp += '\n';
+        }
+        for (ArrayList<Integer> x : coefY) {
+            for (Integer integer : x) {
+                tmp += integer + " ";
+            }
+            tmp += '\n';
+        }
+        return tmp;
     }
 }

@@ -37,10 +37,6 @@ public class LvlEditor extends JPanel {
 
 	}
 
-	public JButton getBack() {
-		return back;
-	}
-
 	public void setDifficulty(String path) {
 		buttons.clear();
 
@@ -73,6 +69,14 @@ public class LvlEditor extends JPanel {
 			}
 			buttons.add(tmp);
 		}
+	}
+
+	public void writeToFile() {
+
+	}
+
+	public JButton getBack() {
+		return back;
 	}
 
 	public JButton getWrite() {

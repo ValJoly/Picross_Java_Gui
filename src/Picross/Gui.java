@@ -129,17 +129,23 @@ public class Gui extends JFrame implements ActionListener{
             }
         }
         if (this.getContentPane() == lvlEditor) {
-            if (e.getSource() == lvlEditor.getBack()) {
+            if (e.getSource() == this.lvlEditor.getBack()) {
                 this.setContentPane(lvlEdDiff);
                 this.setVisible(true);
-            }
-            for (ArrayList<Tile> iterI : this.lvlEditor.getButtons()) {
+            } else if (e.getSource() == this.lvlEditor.getWrite()) {
 
-                for (Tile iterJ : iterI ) {
+                System.out.println(this.lvlEditor.getPicross());
+                this.setContentPane(lvlEdDiff);
+                this.setVisible(true);
+            }else {
+                for (int i = 0; i < this.lvlEditor.getPicross().getSquareSize(); i++) {
+                    for (int j = 0; j < this.lvlEditor.getPicross().getSquareSize(); j++) {
+                        if (e.getSource() == this.lvlEditor.getButtons().get(i).get(j)) {
 
-                    if (e.getSource() == iterJ) {
+                            this.lvlEditor.getButtons().get(i).get(j).setState((this.lvlEditor.getButtons().get(i).get(j).getState() + 1) % 2);
+                            this.lvlEditor.getPicross().setIndex(i, j, this.lvlEditor.getButtons().get(i).get(j).getState());
 
-                        iterJ.setState((iterJ.getState() + 1) % 2);
+                        }
                     }
                 }
             }
