@@ -4,6 +4,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 
 
@@ -133,7 +135,11 @@ public class Gui extends JFrame implements ActionListener{
                 this.setContentPane(lvlEdDiff);
                 this.setVisible(true);
             } else if (e.getSource() == this.lvlEditor.getWrite()) {
-
+                try {
+                    this.lvlEditor.writeToFile();
+                } catch (IOException ioException) {
+                    ioException.printStackTrace();
+                }
                 System.out.println(this.lvlEditor.getPicross());
                 this.setContentPane(lvlEdDiff);
                 this.setVisible(true);

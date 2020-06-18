@@ -3,6 +3,10 @@ package Picross;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 
 public class LvlEditor extends JPanel {
@@ -12,25 +16,30 @@ public class LvlEditor extends JPanel {
 	private JButton back;
 	private JButton write;
 	private PicrossBoard picross;
+	private JTextField textField;
 	private String writePath;
 
 
 	LvlEditor(ActionListener listener) {
 
-		buttons = new ArrayList<>();
+		this.buttons = new ArrayList<>();
 		this.listener = listener;
 		this.picross = new PicrossBoard();
-		this.writePath = new String("assets/picrossFiles/");
+		this.writePath = new String();
 
-		back = new JButton("Back");
-		back.setBounds(550, 550, 100, 100);
-		back.addActionListener(listener);
-		back.setBackground(Color.white);
+		this.textField = new JTextField("Name");
+		//this.textField.setColumns(10); //On lui donne un nombre de colonnes à afficher
+		this.textField.setBounds(250, 580, 150, 25);
 
-		write = new JButton("write");
-		write.setBounds(30, 550, 100, 100);
-		write.addActionListener(listener);
-		write.setBackground(Color.white);
+		this.back = new JButton("Back");
+		this.back.setBounds(550, 550, 100, 100);
+		this.back.addActionListener(listener);
+		this.back.setBackground(Color.white);
+
+		this.write = new JButton("write");
+		this.write.setBounds(30, 550, 100, 100);
+		this.write.addActionListener(listener);
+		this.write.setBackground(Color.white);
 
 		this.setLayout(null);
 		this.setBackground(Color.darkGray);
@@ -38,14 +47,16 @@ public class LvlEditor extends JPanel {
 	}
 
 	public void setDifficulty(String path) {
-		buttons.clear();
-
+		this.buttons.clear();
+		this.writePath = "assets/picrossFiles/";
 		for (int i = this.getComponentCount() - 1; i >= 0; i--) {
 			this.remove(i);
 		}
+		this.textField.setText("Name");
+		this.add(textField);
 		this.add(back);
 		this.add(write);
-		writePath += path;
+		writePath += (path + "/");
 
 		switch (path) {
 			case "easy" :
@@ -71,7 +82,14 @@ public class LvlEditor extends JPanel {
 		}
 	}
 
-	public void writeToFile() {
+	public void writeToFile() throws IOException {
+
+		File file = new File(this.writePath + this.textField.getText() + ".picross");
+		System.out.println(file.getPath());
+		FileWriter fileWriter = new FileWriter(file.getPath());
+		PrintWriter printWriter = new PrintWriter(fileWriter);
+		printWriter.print(this.picross);
+		printWriter.close();
 
 	}
 
