@@ -50,3 +50,9 @@
 ### Level editor
 
  <img src="readme_images/lvl_editor_easy.PNG" width="300"/> <img src="readme_images/lvl_editor_medium.PNG" width="300"/> <img src="readme_images/lvl_editor.PNG" width="300"/>
+
+##How to test
+
+You can simply create a new projet in your favorite IDE
+and import my sources from my github (like in intelliJ or Eclipse)
+Or launch my .jar file in the root folder if this work on your system configuration
