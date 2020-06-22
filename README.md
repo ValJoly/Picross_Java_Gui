@@ -31,22 +31,22 @@
   and then create your beautiful black and white pixel
   art and name it how ever you want
 
- <img src="readme_images/lvl_editor.PNG" width="200"/>
+ <img src="readme_images/lvl_editor.PNG" width="400"/>
 
 ## Preview
 
 ### Menu
 
- <img src="readme_images/main_menu.PNG" width="200"/>
+ <img src="readme_images/main_menu.PNG" width="400"/>
 
 ### Choice of level
 
- <img src="readme_images/lvl_choice.PNG" width="200"/>
+ <img src="readme_images/lvl_choice.PNG" width="400"/>
 
 ### Game
 
- <img src="readme_images/game.PNG" width="200"/>
+ <img src="readme_images/game.PNG" width="400"/>
 
 ### Level editor
 
- <img src="readme_images/lvl_editor_easy.PNG" width="150"/> <img src="readme_images/lvl_editor_medium.PNG" width="150"/> <img src="readme_images/lvl_editor.PNG" width="150"/>
+ <img src="readme_images/lvl_editor_easy.PNG" width="300"/> <img src="readme_images/lvl_editor_medium.PNG" width="300"/> <img src="readme_images/lvl_editor.PNG" width="300"/>
