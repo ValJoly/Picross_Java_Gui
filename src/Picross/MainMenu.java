@@ -25,7 +25,7 @@ public class MainMenu extends JPanel {
         edition = new JButton("Lvl editor");
         edition.setBackground(Color.white);
         difficulty = new JLabel("Choose your level of difficulty :");
-
+        difficulty.setForeground(Color.white);
         difficulty.setBounds(this.getBounds().width / 2 - 85, this.getBounds().height * 1 / 7, 200, 50);
         easy.setBounds(this.getBounds().width / 2 - 75, this.getBounds().height * 2 / 7, 150, 50);
         medium.setBounds(this.getBounds().width / 2 - 75, this.getBounds().height * 3 / 7, 150, 50);

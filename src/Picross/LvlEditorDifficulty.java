@@ -32,6 +32,7 @@ public class LvlEditorDifficulty extends JPanel {
         back.setBackground(Color.white);
 
         difficulty = new JLabel("Choose the size of your creation:");
+        difficulty.setForeground(Color.white);
 
         difficulty.setBounds(this.getBounds().width / 2 - 85, this.getBounds().height * 1 / 7, 200, 50);
         easy.setBounds(this.getBounds().width / 2 - 75, this.getBounds().height * 2 / 7, 150, 50);

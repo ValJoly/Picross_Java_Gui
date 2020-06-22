@@ -63,8 +63,8 @@ public class Game extends JPanel {
                 labelY.setText(labelY.getText() + "  " + coef.toString());
             }
 
-            labelX.setBackground(Color.gray);
-            labelY.setBackground(Color.gray);
+            labelX.setForeground(Color.white);
+            labelY.setForeground(Color.white);
 
             labelX.setBounds(i * (40 - picross.getSquareSize()) + (40 - picross.getSquareSize()) / 2, picross.getSquareSize() * (40 - picross.getSquareSize()), (40 - picross.getSquareSize()), 110);
             labelX.setText(convertToMultiline(labelX.getText()));
